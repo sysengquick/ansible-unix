@@ -14,8 +14,10 @@
         mode: "0755"
       become: "{{ configs_opts.become }}"
       loop: "{{ configs_files_final }}"
-      when: configs_opts.directory
+      when: configs_opts.directory is not none
 
-    - name: Create config files for {{ item.key }}
+    - name: Create config files
       ansible.builtin.include_tasks: includes/files.yml
       loop: "{{ configs_files_final }}"
+      loop_control:
+        label: "{{ item.key }}"
