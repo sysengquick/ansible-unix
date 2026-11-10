@@ -23,7 +23,7 @@ RUN sed -i 's/^# *en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen \
   && locale-gen en_US.UTF-8
 
 # install ansible packages
-RUN python3 -m pip install 'ansible-core>=2.19,<2.20' ansible-lint
+RUN python3 -m pip install 'ansible-core>=2.21,<2.22' ansible-lint
 
 # install the collection dependencies declared in galaxy.yml
 COPY collections/ansible_collections/sysengquick/unix/galaxy.yml /tmp/galaxy.yml

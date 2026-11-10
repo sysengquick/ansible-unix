@@ -12,7 +12,7 @@
 {% set skipvar = stockvar ~ '_skip' -%}
 
 {# Generate final options #}
-{% set final_options = macros.merge_options(vars[stockvar], vars[extravar], vars[skipvar]) | from_json -%}
+{% set final_options = macros.merge_options(lookup('vars', stockvar), lookup('vars', extravar), lookup('vars', skipvar)) | from_json -%}
 
 {# Add section header and SSH options #}
 {% for pattern, options in final_options.items() %}
